@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme ===== */
+@theme {
+  --color-obsidian: #050505;
+  --color-obsidian-dark: #020202;
+  --color-glass-border: rgba(255, 255, 255, 0.15);
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-silver: #C0C0C0;
+  --color-silver-dim: #808080;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-body: "Inter", sans-serif;
+
+  --animate-blob: liquidMove 20s infinite ease-in-out alternate;
+  --animate-float: float 10s ease-in-out infinite;
+  --animate-spin-slow: spin 15s linear infinite;
+
+  --keyframes-liquidMove: {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(10%, 10%) scale(1.1); }
+    50% { transform: translate(-5%, 20%) scale(1.05); }
+    75% { transform: translate(-10%, -10%) scale(0.95); }
+    100% { transform: translate(0, 0) scale(1); }
+  };
+  --keyframes-float: {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  };
+}
+
+/* ===== Base Styles ===== */
+body {
+  background-color: #050505;
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ===== Utilities ===== */
+.text-glow {
+  text-shadow: 0 0 30px rgba(255,255,255,0.4);
+}
+
+.silver-text-glow {
+  text-shadow: 0 0 20px rgba(192,192,192,0.3);
+}
+
+.glass-card-hover {
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===== Page Transitions ===== */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: fadeSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ===== Cookie Consent ===== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cookie-banner-enter {
+  animation: slideUp 0.5s cubic-bezier(0.19, 1, 0.22, 1) both;
+  animation-delay: 1s;
+}
+
+/* ===== Loading Spinner ===== */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.loading-pulse {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
